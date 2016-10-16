@@ -1,0 +1,34 @@
+{
+  "name": "revaluate",
+  "version": "0.0.0",
+  "description": "re-evaluate JavaScript code within its original context",
+  "main": "lib/revaluate.js",
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "dependencies": {
+    "reshift": "^0.0.1"
+  },
+  "devDependencies": {
+    "tape": "^4.6.2"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hasharray/revaluate.js.git"
+  },
+  "keywords": [
+    "live",
+    "eval",
+    "revaluate"
+  ],
+  "author": "Casper Beyer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hasharray/revaluate.js/issues"
+  },
+  "homepage": "https://github.com/hasharray/revaluate.js"
+}
