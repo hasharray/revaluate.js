@@ -1,6 +1,6 @@
 {
   "name": "revaluate",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "re-evaluate JavaScript code within its original context",
   "main": "lib/revaluate.js",
   "directories": {
