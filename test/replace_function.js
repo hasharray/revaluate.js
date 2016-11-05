@@ -1,46 +1,38 @@
-var test = require('tape');
+var assert = require('assert');
 var revaluate = require('..');
 
-test('replace function definition', function(assert) {
-  var name = Date.now();
-  var result = [];
+var name = Date.now().toString(36) + '.js';
+var result = [];
 
-  for (var i = 0; i < 10; i++) {
-    var value = i;
+for (var i = 0; i < 10; i++) {
+  var value = i;
 
-    var code = [
-      'var fn = (function() {',
-      '  return $value;',
-      '})',
-      'fn',
-    ].join('\n')
-      .replace(/\$value/, value);
-
-    var fn = revaluate(code, name, function(output) {
-      return eval(output.code);
-    });
-
-    for (var j = 0; j < result.length; j++) {
-      assert.equal(result[j](), value);
-    }
-
-    assert.equal(fn(), value);
-    result.push(fn);
-  }
-
-  for (var i = 0; i < result.length; i++) {
-    for (var j = 0; j < result.length; j++) {
-      assert.equal(result[i](), result[j]());
-    }
-  }
-
-  revaluate('', name, function(output) {
+  var fn = revaluate([
+    '(function() {',
+    '  return ' + value + ';',
+    '})',
+  ].join('\n'), name, function(output) {
     return eval(output.code);
   });
 
-  for (var i = 0; i < result.length; i++) {
-    assert.equal(result[i](), undefined);
+  for (var j = 0; j < result.length; j++) {
+    assert.equal(result[j](), value);
   }
 
-  assert.end();
+  assert.equal(fn(), value);
+  result.push(fn);
+}
+
+for (var i = 0; i < result.length; i++) {
+  for (var j = 0; j < result.length; j++) {
+    assert.equal(result[i](), result[j]());
+  }
+}
+
+revaluate('', name, function(output) {
+  return eval(output.code);
 });
+
+for (var i = 0; i < result.length; i++) {
+  assert.equal(result[i](), undefined);
+}
