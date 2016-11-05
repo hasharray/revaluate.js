@@ -10,7 +10,7 @@ for (var index = 0; index < 10; index++) {
   revaluate([
     'result = ' + index + ';',
   ].join('\n'), name, function(output) {
-    return eval(output.code);
+    return eval(output.toString());
   });
 
   assert.equal(result, value);

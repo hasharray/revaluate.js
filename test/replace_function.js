@@ -12,7 +12,7 @@ for (var i = 0; i < 10; i++) {
     '  return ' + value + ';',
     '})',
   ].join('\n'), name, function(output) {
-    return eval(output.code);
+    return eval(output.toString());
   });
 
   for (var j = 0; j < result.length; j++) {
@@ -30,7 +30,7 @@ for (var i = 0; i < result.length; i++) {
 }
 
 revaluate('', name, function(output) {
-  return eval(output.code);
+  return eval(output.toString());
 });
 
 for (var i = 0; i < result.length; i++) {

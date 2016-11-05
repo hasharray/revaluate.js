@@ -6,7 +6,7 @@ for (var index = 0; index < 10; index++) {
   var value = revaluate([
     'Math.max(-1, ' + index + ');',
   ].join('\n'), name, function(output) {
-    return eval(output.code);
+    return eval(output.toString());
   });
 
   assert.equal(value, index);
@@ -19,7 +19,7 @@ for (var index = 0; index < 10; index++) {
     '}',
     'factory()',
   ].join('\n'), name, function(output) {
-    return eval(output.code);
+    return eval(output.toString());
   });
 
   assert.equal(value, index);
@@ -30,7 +30,7 @@ for (var i = 0; i < 10; i++) {
   var value = revaluate([
     'Math.random();',
   ].join('\n'), name, function(output) {
-    return eval(output.code);
+    return eval(output.toString());
   });
 
   result.push(value);
