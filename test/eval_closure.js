@@ -44,3 +44,30 @@ for (var i = 0; i < 10; i++) {
 
   assert.equal(fn()(), 0);
 }
+
+var result = [];
+for (var i = 0; i < 10; i++) {
+  var fn = revaluate([
+    '(function() {',
+    '  return value;',
+    '})',
+  ].join('\n'), name, function(output) {
+    return eval(output.toString());
+  });
+
+  result.push(fn);
+}
+
+revaluate([
+  'var value = 0;',
+  '(function() {',
+  '  return value;',
+   '})',
+].join('\n'), name, function(output) {
+  return eval(output.toString());
+});
+
+for (var i = 0; i < result.length; i++) {
+  var fn = result[i];
+  assert.equal(fn(), 0);
+}
