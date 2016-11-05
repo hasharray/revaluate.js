@@ -28,7 +28,9 @@ for (var index = 0; index < 10; index++) {
 var result = [];
 for (var i = 0; i < 10; i++) {
   var value = revaluate([
-    'Math.random();',
+    'Math.random(function fn' + i + '() {',
+    '  return ' + Math.random() + ' * ' + Math.random() + ';',
+    '});',
   ].join('\n'), name, function(output) {
     return eval(output.toString());
   });
