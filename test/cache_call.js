@@ -12,19 +12,6 @@ for (var index = 0; index < 10; index++) {
   assert.equal(value, index);
 }
 
-for (var index = 0; index < 10; index++) {
-  var value = revaluate([
-    'function factory() {',
-    '  return Math.max(-1, ' + index + ');',
-    '}',
-    'factory()',
-  ].join('\n'), name, function(output) {
-    return eval(output.toString());
-  });
-
-  assert.equal(value, index);
-}
-
 var result = [];
 for (var i = 0; i < 10; i++) {
   var value = revaluate([
