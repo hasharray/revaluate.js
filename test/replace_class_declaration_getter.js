@@ -30,14 +30,3 @@ for (var i = 0; i < objects.length; i++) {
     assert.equal(objects[i].value, objects[j].value);
   }
 }
-
-revaluate([
-  'class Class {',
-  '}',
-].join('\n'), name, function(output) {
-  return eval(output.toString());
-});
-
-for (var i = 0; i < objects.length; i++) {
-  assert.equal(objects[i].fn, undefined);
-}
