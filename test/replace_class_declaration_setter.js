@@ -1,29 +1,22 @@
 var assert = require('assert');
 var revaluate = require('..');
 
-var name = Date.now().toString(36) + '.js';
-var objects = [];
-
+var result = [];
 for (var i = 0; i < 10; i++) {
-  var key = i;
-  var value = i;
-
-  var result = revaluate([
+  var cls = revaluate([
     'class Class {',
     '  set value(value) {',
-    '    this[' + key + '] = ' + value + ';',
+    '    this[' + i + '] = value;',
     '  }',
     '}',
     'Class',
-  ].join('\n'), name, function(output) {
+  ].join('\n'), __filename, function(output) {
     return eval(output.toString());
   });
 
-  var object = new result();
-  objects.push(object);
-
-  for (var j = 0; j < objects.length; j++) {
-    objects[j].value = 1;
-    assert.equal(objects[j][key], value);
+  result.push(new cls());
+  for (var j = 0; j < result.length; j++) {
+    result[j].value = i;
+    assert.equal(result[j][i], i);
   }
 }

@@ -1,17 +1,13 @@
 var assert = require('assert');
 var revaluate = require('..');
 
-var name = Date.now().toString(36) + '.js';
-var result = null;
-
-for (var index = 0; index < 10; index++) {
-  var value = index;
-
+result = null;
+for (var i = 0; i < 10; i++) {
   revaluate([
-    'result = ' + index + ';',
-  ].join('\n'), name, function(output) {
+    'result = ' + i + ';',
+  ].join('\n'), __filename, function(output) {
     return eval(output.toString());
   });
 
-  assert.equal(result, value);
+  assert.equal(result, i);
 }
