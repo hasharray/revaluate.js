@@ -4,7 +4,7 @@ var revaluate = require('..');
 var result = [];
 for (var i = 0; i < 10; i++) {
   var cls = revaluate([
-    '(class Class {})',
+    '(class Cls {})',
   ].join('\n'), __filename, function(output) {
     return eval(output.toString());
   });
@@ -14,6 +14,6 @@ for (var i = 0; i < 10; i++) {
 
 for (var i = 0; i < result.length; i++) {
   for (var j = 0; j < result.length; j++) {
-    assert.equal(result[i], result[j]);
+    assert.strictEqual(result[i], result[j]);
   }
 }
