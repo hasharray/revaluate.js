@@ -9,7 +9,7 @@ var obj = revaluate([
 
 revaluate([
   '({',
-  '  fn() {}',
+  '  fn: function() {}',
   '})',
 ].join('\n'), __filename, function(output) {
   return eval(output.toString());

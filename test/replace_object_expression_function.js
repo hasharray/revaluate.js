@@ -5,7 +5,7 @@ var result = [];
 for (var i = 0; i < 10; i++) {
   var obj = revaluate([
     '({',
-    '  fn() {',
+    '  fn: function() {',
     '    return ' + i + ';',
     '  }',
     '})',

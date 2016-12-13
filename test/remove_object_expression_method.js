@@ -3,7 +3,7 @@ var revaluate = require('..');
 
 var obj = revaluate([
   '({',
-  '  fn: function() {}',
+  '  fn() {}',
   '})',
 ].join('\n'), __filename, function(output) {
   return eval(output.toString());
