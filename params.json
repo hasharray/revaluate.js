@@ -1,6 +1,0 @@
-{
-  "name": "Revaluate.js",
-  "tagline": "re-evaluate code in its original context without side-effects",
-  "body": "Revaluate.js lets you re-evaluate JavaScript code within its original execution\r\ncontext without causing unwanted side-effects.\r\n\r\nIt does this by compile time meta-programming, give it the content and filename\r\nof a script and it will compile consecutive updates of that script for you which\r\ncan be evaluated with `eval` or other means of code execution.\r\n\r\nThe code transformation does the following things:\r\n\r\n* Functions expressions and declarations are proxied,\r\non consecutive runs the inner target function will be replaced.\r\n\r\n* Call expressions are memoized on their first run, on consecutive runs the\r\nmemoized value will be yielded.\r\n\r\n## Install\r\n\r\n```console\r\nnpm install revaluate\r\n```\r\n\r\n## LICENSE\r\n\r\nMIT\r\n",
-  "note": "Don't delete this file! It's used internally to help with page regeneration."
-}
